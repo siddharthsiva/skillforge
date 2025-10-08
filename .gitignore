@@ -7,4 +7,5 @@
 docker-compose.yml 
 
 # You might also want to ignore Node.js dependencies
-node_modules/
+node_modules/.env
+.env
