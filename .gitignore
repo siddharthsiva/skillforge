@@ -1,11 +1,2 @@
-# .gitignore
-
-# Ignore environment files, which often contain secrets
-.env
-
-# Ignore configuration files that contain secrets
-docker-compose.yml 
-
-# You might also want to ignore Node.js dependencies
-node_modules/.env
-.env
+backend/.env
+backend/docker-compose.yml
