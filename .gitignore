@@ -1,2 +1,8 @@
-backend/.env
+# Files to ignore (Combined Version)
+.env
 backend/docker-compose.yml
+node_modules/
+
+# Build and deployment files
+dist/
+build/
