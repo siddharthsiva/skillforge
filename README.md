@@ -1,83 +1,107 @@
-🧠 SkillForge
-Gamified Learning with XP, Quests, and a Reactive Skill Tree
+# 🧠 SkillForge
 
-SkillForge is a full-stack, gamified learning platform that blends real-time challenges, XP-based progression, and a dynamic skill tree. Built for learners who thrive on feedback, structure, and visual progress.
+**Gamified learning platform with animated skill trees, XP-based progression, and AI-generated quests**
 
-🚀 Features
-🌳 Skill Tree: Visual map of topics with unlock logic, XP gates, and animated transitions
+SkillForge transforms education into an interactive quest. Learners earn XP by completing challenges, unlock new skills through a dynamic tree, and track their progress in real time. Powered by Firebase, FastAPI, and LangChain, it blends frontend polish with backend intelligence.
 
-⚔️ Battle System: Real-time multiplayer challenges with scoring and live sync
+Available as a mobile-first React Native app with optional FastAPI backend for AI-driven quest generation.
 
-🎮 Quests: Topic-specific challenges that award XP and unlock new skills
+---
 
-📊 XP Tracking: Firebase-backed XP system with progress bars and unlock thresholds
+## 🌟 Key Features
 
-🧩 Category Filtering: Group skills by domain (Python, AI, Algorithms, etc.)
+- 🌳 **Animated Skill Tree**  
+  Visual progression map with unlock logic, XP gates, and smooth transitions
 
-🎬 Animated Unlocks: Smooth transitions when new skills become available
+- ⚔️ **Battle System**  
+  Real-time multiplayer challenges with scoring and live sync
 
-🔗 Firebase Integration: Real-time sync for XP, progress, and skill completion
+- 🎮 **Quests**  
+  Topic-specific challenges that award XP and unlock new skills
 
-🧠 Type-Safe Navigation: Fully typed React Navigation stack with modular screen logic
+- 📊 **XP Tracking**  
+  Firebase-backed XP system with progress bars and unlock thresholds
 
-🧱 Architecture Overview
-Code
-SkillForge/
-├── app/
-│   ├── screens/              # React Native screens (SkillTree, Quest, Battle, etc.)
-│   ├── components/           # Reusable UI components
-│   ├── data/                 # Static skill tree structure
-│   ├── types/                # Global TypeScript types
-│   ├── firebase.ts           # Firebase config and SDK setup
-│   └── navigation/           # Stack and tab navigators
-├── backend/                  # FastAPI backend (optional for advanced logic)
-│   └── api/                  # LangChain integration, XP logic, matchmaking
-├── assets/                   # Icons, fonts, images
-├── .env                      # Secrets (managed securely)
-├── app.json / package.json   # App config and dependencies
-└── README.md                 # This file
-🧠 Skill Tree Logic
-Each skill node is defined as:
+- 🧩 **Category Filtering**  
+  Group skills by domain (Python, AI, Algorithms, etc.) with color-coded branches
 
-ts
-type SkillNode = {
-  unlocked: boolean;
-  children: string[];
-  requiredXP?: number;
-  category?: string;
-  icon?: string;
-};
-Unlock logic:
+- 🎬 **Animated Unlocks**  
+  Smooth transitions when new skills become available
 
-A skill is unlocked if:
+- 🤖 **LangChain Backend**  
+  AI-generated quests and semantic skill recommendations
 
-It’s marked unlocked: true
+- 🔗 **Firebase Integration**  
+  Real-time sync for XP, progress, and skill completion
 
-OR its parent is completed AND user has enough XP
+- 🧪 **Type-Safe Navigation**  
+  Fully typed React Navigation stack with modular screen logic
 
-Animated transitions trigger when a skill changes from locked → unlocked.
+---
 
-🔥 Technologies Used
-Layer	Tech Stack
-Frontend	React Native, TypeScript, Expo
-Navigation	React Navigation (Native Stack)
-Backend (opt)	FastAPI, LangChain, PostgreSQL
-Realtime DB	Firebase Realtime Database
-Auth (opt)	Firebase Auth or OAuth
-State Mgmt	React Hooks
-Styling	React Native StyleSheet
-⚙️ Setup Instructions
-1. Clone the repo
-bash
+## 📱 Demo
+
+Watch SkillForge in action:  
+- Completing a quest unlocks a new skill node  
+- XP progress bar animates in real time  
+- Skill tree updates with smooth transitions and category colors
+
+📹 `demo.mp4` (coming soon)
+
+---
+
+## 🧱 Project Structure
+skillforge/
+├── app/                            # 📱 React Native Frontend
+│   ├── screens/                    # SkillTree, Quest, Battle, Profile screens
+│   ├── components/                # Reusable UI components (ProgressBar, SkillNode, etc.)
+│   ├── data/                       # Static skill tree structure and metadata
+│   ├── types/                      # Global TypeScript types and interfaces
+│   ├── firebase.ts                 # Firebase config and SDK setup
+│   ├── navigation/                 # Stack and tab navigators
+│   └── App.tsx                     # Entry point for the mobile app
+├── backend/                        # ⚙️ FastAPI + LangChain Backend (optional)
+│   ├── api/                        # Quest generation, semantic search, XP logic
+│   ├── models/                     # Pydantic models and schema definitions
+│   ├── langchain/                  # LangChain pipelines and prompt templates
+│   ├── database.py                 # PostgreSQL connection and ORM setup
+│   ├── main.py                     # FastAPI entry point
+│   └── Dockerfile                  # Containerized backend configuration
+├── assets/                         # 🎨 Icons, fonts, images
+├── tests/                          # 🧪 Unit and integration tests
+│   └── test_*.ts                   # Frontend and backend test suites
+├── .env                            # 🔐 Environment variables and secrets
+├── app.json                        # Expo app configuration
+├── package.json                    # Project dependencies and scripts
+└── README.md                       # 📘 Project documentation
+
+---
+
+## 🔥 Tech Stack
+
+| Layer         | Tech Stack                          |
+|--------------|-------------------------------------|
+| Frontend      | React Native, TypeScript, Expo      |
+| Navigation    | React Navigation (Native Stack)     |
+| Backend       | FastAPI, LangChain, PostgreSQL      |
+| Realtime DB   | Firebase Realtime Database          |
+| Auth (opt)    | Firebase Auth or OAuth              |
+| Styling       | React Native StyleSheet             |
+| Deployment    | Docker, GitHub Actions (optional)   |
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repo
+```bash
 git clone https://github.com/your-username/skillforge.git
 cd skillforge
-2. Install dependencies
-bash
-npm install
-3. Configure Firebase
-Create firebase.ts:
 
-ts
+### 2. Install Dependencies
+npm install
+
+### 3. Configre Firebase
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
@@ -89,13 +113,15 @@ const firebaseConfig = {
   storageBucket: 'YOUR_BUCKET',
   messagingSenderId: 'YOUR_SENDER_ID',
   appId: 'YOUR_APP_ID',
-};
+}
 
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
-4. Run the app
-bash
+
+### 4. Run the App
 npx expo start
+
+
 🧪 Development Notes
 Type Safety: All navigation and skill tree logic is strictly typed
 
@@ -107,10 +133,10 @@ Animated Unlocks: Uses Animated.Value and useEffect to trigger transitions
 
 Category Filtering: Tapable legend filters the tree by domain
 
+LangChain Integration: Backend generates quests and recommendations using semantic search
+
 🧠 Future Enhancements
 🏆 Leaderboards and multiplayer matchmaking
-
-🧠 AI-generated quests via LangChain
 
 📱 Profile screen with badges and history
 
@@ -118,5 +144,9 @@ Category Filtering: Tapable legend filters the tree by domain
 
 📦 Migrate to Firestore or PostgreSQL for scalability
 
+🔍 Search bar and collapsible skill branches
+
+🧠 AI-generated quests via LangChain
+
 👨‍💻 Maintainer
-Built by Siddharth Sivalanka Computer Science @ UC San Diego | AI, Robotics, and Education Enthusiast 
+Built by Siddharth Sivalanka Computer Science @ UC San Diego | AI, Robotics, and Education Enthusiast
