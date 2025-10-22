@@ -51,36 +51,48 @@ Watch SkillForge in action:
 ---
 
 ## 🧱 Project Structure
-skillforge/
-├── app/                            # 📱 React Native Frontend
-│   ├── screens/                    # SkillTree, Quest, Battle, Profile screens
-│   ├── components/                 # Reusable UI components (ProgressBar, SkillNode, etc.)
-│   ├── data/                       # Static skill tree structure and metadata
-│   ├── types/                      # Global TypeScript types and interfaces
-│   ├── firebase.ts                 # Firebase config and SDK setup
-│   ├── navigation/                 # Stack and tab navigators
-│   └── App.tsx                     # Entry point for the mobile app
-├── backend/                        # ⚙️ FastAPI + LangChain Backend (optional)
-│   ├── api/                        # Quest generation, semantic search, XP logic
-│   ├── models/                     # Pydantic models and schema definitions
-│   ├── langchain/                  # LangChain pipelines and prompt templates
-│   ├── database.py                 # PostgreSQL connection and ORM setup
-│   ├── main.py                     # FastAPI entry point
-│   └── Dockerfile                  # Containerized backend configuration
-├── pipelines/                      # 🤖 AI + XP Processing Pipelines
-│   ├── quest_generator.py          # LangChain-powered quest generation
-│   ├── skill_recommender.py        # Semantic skill suggestions
-│   └── xp_calculator.py            # XP logic and progression rules
-├── tests/                          # 🧪 Unit and integration tests
-│   └── test_*.ts                   # Frontend and backend test suites
-├── assets/                         # 🎨 Icons, fonts, images
-├── .env                            # 🔐 Environment variables and secrets
-├── app.json                        # Expo app configuration
-├── package.json                    # Project dependencies and scripts
-└── README.md                       # 📘 Project documentation
+```
+README.md                    # 📘 Project documentation (this file)
+.env                         # 🔐 Environment variables and secrets
+app.json                     # Expo app configuration
+package.json                 # npm scripts and dependencies
 
+app/                         # 📱 React Native frontend
+  firebase.ts                # Firebase config and SDK setup
+  navigation/                # Stack and tab navigators
+  data/                      # Static skill tree structure and metadata
+  types/                     # Global TypeScript types and interfaces
+  components/                # Reusable UI components (ProgressBar, SkillNode, etc.)
+  screens/                   # SkillTree, Quest, Battle, Profile screens
+    SkillTreeScreen.tsx     # Animated skill tree with XP logic and filtering
+    QuestScreen.tsx         # Quest interface and XP awarding
+    BattleScreen.tsx        # Real-time multiplayer challenge view
+  App.tsx                   # Entry point for the mobile app
 
+backend/                     # ⚙️ FastAPI + LangChain backend (optional)
+  Dockerfile                 # Backend image build
+  requirements.txt           # Python dependencies
+  main.py                    # FastAPI entry point
+  database.py                # PostgreSQL connection and ORM setup
+  api/                       # Quest generation, semantic search, XP logic
+  models/                    # Pydantic models and schema definitions
+  langchain/                 # LangChain pipelines and prompt templates
 
+pipelines/                   # 🤖 AI + XP processing pipelines
+  quest_generator.py         # LangChain-powered quest generation
+  skill_recommender.py       # Semantic skill suggestions
+  xp_calculator.py           # XP logic and progression rules
+
+tests/                       # 🧪 Unit and integration tests
+  test_*.ts                  # Frontend and backend test suites
+
+assets/                      # 🎨 Icons, fonts, images
+
+.github/                     # CI workflows
+  workflows/
+    ci.yml                   # GitHub Actions: tests, build, deploy
+
+```
 ---
 
 ## 🔥 Tech Stack
