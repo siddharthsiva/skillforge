@@ -1,50 +1,122 @@
-# Welcome to your Expo app 👋
+🧠 SkillForge
+Gamified Learning with XP, Quests, and a Reactive Skill Tree
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+SkillForge is a full-stack, gamified learning platform that blends real-time challenges, XP-based progression, and a dynamic skill tree. Built for learners who thrive on feedback, structure, and visual progress.
 
-## Get started
+🚀 Features
+🌳 Skill Tree: Visual map of topics with unlock logic, XP gates, and animated transitions
 
-1. Install dependencies
+⚔️ Battle System: Real-time multiplayer challenges with scoring and live sync
 
-   ```bash
-   npm install
-   ```
+🎮 Quests: Topic-specific challenges that award XP and unlock new skills
 
-2. Start the app
+📊 XP Tracking: Firebase-backed XP system with progress bars and unlock thresholds
 
-   ```bash
-   npx expo start
-   ```
+🧩 Category Filtering: Group skills by domain (Python, AI, Algorithms, etc.)
 
-In the output, you'll find options to open the app in a
+🎬 Animated Unlocks: Smooth transitions when new skills become available
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+🔗 Firebase Integration: Real-time sync for XP, progress, and skill completion
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+🧠 Type-Safe Navigation: Fully typed React Navigation stack with modular screen logic
 
-## Get a fresh project
+🧱 Architecture Overview
+Code
+SkillForge/
+├── app/
+│   ├── screens/              # React Native screens (SkillTree, Quest, Battle, etc.)
+│   ├── components/           # Reusable UI components
+│   ├── data/                 # Static skill tree structure
+│   ├── types/                # Global TypeScript types
+│   ├── firebase.ts           # Firebase config and SDK setup
+│   └── navigation/           # Stack and tab navigators
+├── backend/                  # FastAPI backend (optional for advanced logic)
+│   └── api/                  # LangChain integration, XP logic, matchmaking
+├── assets/                   # Icons, fonts, images
+├── .env                      # Secrets (managed securely)
+├── app.json / package.json   # App config and dependencies
+└── README.md                 # This file
+🧠 Skill Tree Logic
+Each skill node is defined as:
 
-When you're ready, run:
+ts
+type SkillNode = {
+  unlocked: boolean;
+  children: string[];
+  requiredXP?: number;
+  category?: string;
+  icon?: string;
+};
+Unlock logic:
 
-```bash
-npm run reset-project
-```
+A skill is unlocked if:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+It’s marked unlocked: true
 
-## Learn more
+OR its parent is completed AND user has enough XP
 
-To learn more about developing your project with Expo, look at the following resources:
+Animated transitions trigger when a skill changes from locked → unlocked.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+🔥 Technologies Used
+Layer	Tech Stack
+Frontend	React Native, TypeScript, Expo
+Navigation	React Navigation (Native Stack)
+Backend (opt)	FastAPI, LangChain, PostgreSQL
+Realtime DB	Firebase Realtime Database
+Auth (opt)	Firebase Auth or OAuth
+State Mgmt	React Hooks
+Styling	React Native StyleSheet
+⚙️ Setup Instructions
+1. Clone the repo
+bash
+git clone https://github.com/your-username/skillforge.git
+cd skillforge
+2. Install dependencies
+bash
+npm install
+3. Configure Firebase
+Create firebase.ts:
 
-## Join the community
+ts
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
 
-Join our community of developers creating universal apps.
+const firebaseConfig = {
+  apiKey: 'YOUR_API_KEY',
+  authDomain: 'YOUR_DOMAIN',
+  databaseURL: 'YOUR_DB_URL',
+  projectId: 'YOUR_PROJECT_ID',
+  storageBucket: 'YOUR_BUCKET',
+  messagingSenderId: 'YOUR_SENDER_ID',
+  appId: 'YOUR_APP_ID',
+};
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+const app = initializeApp(firebaseConfig);
+export const db = getDatabase(app);
+4. Run the app
+bash
+npx expo start
+🧪 Development Notes
+Type Safety: All navigation and skill tree logic is strictly typed
+
+Modular Screens: Each screen is isolated and reusable
+
+XP Sync: XP is stored in Firebase and used to gate skill unlocks
+
+Animated Unlocks: Uses Animated.Value and useEffect to trigger transitions
+
+Category Filtering: Tapable legend filters the tree by domain
+
+🧠 Future Enhancements
+🏆 Leaderboards and multiplayer matchmaking
+
+🧠 AI-generated quests via LangChain
+
+📱 Profile screen with badges and history
+
+🔐 Auth and persistent user sessions
+
+📦 Migrate to Firestore or PostgreSQL for scalability
+
+👨‍💻 Maintainer
+Built by Siddharth Sivalanka Computer Science @ UC San Diego | AI, Robotics, and Education Enthusiast 

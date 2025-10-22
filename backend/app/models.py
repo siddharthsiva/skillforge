@@ -18,3 +18,19 @@ class Quest(Base):
     topic = Column(String)
     challenge = Column(JSON)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+class BattleSession:
+    @staticmethod
+    def create(user1, user2, quiz):
+        # Store in DB or memory (simplified)
+        return {
+            "id": "session-xyz",
+            "quiz": quiz,
+            "players": [user1, user2]
+        }
+
+    @staticmethod
+    def get(session_id):
+        # Retrieve session
+        pass
+
