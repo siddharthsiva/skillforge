@@ -54,7 +54,7 @@ Watch SkillForge in action:
 skillforge/
 ├── app/                            # 📱 React Native Frontend
 │   ├── screens/                    # SkillTree, Quest, Battle, Profile screens
-│   ├── components/                # Reusable UI components (ProgressBar, SkillNode, etc.)
+│   ├── components/                 # Reusable UI components (ProgressBar, SkillNode, etc.)
 │   ├── data/                       # Static skill tree structure and metadata
 │   ├── types/                      # Global TypeScript types and interfaces
 │   ├── firebase.ts                 # Firebase config and SDK setup
@@ -67,13 +67,18 @@ skillforge/
 │   ├── database.py                 # PostgreSQL connection and ORM setup
 │   ├── main.py                     # FastAPI entry point
 │   └── Dockerfile                  # Containerized backend configuration
-├── assets/                         # 🎨 Icons, fonts, images
+├── pipelines/                      # 🤖 AI + XP Processing Pipelines
+│   ├── quest_generator.py          # LangChain-powered quest generation
+│   ├── skill_recommender.py        # Semantic skill suggestions
+│   └── xp_calculator.py            # XP logic and progression rules
 ├── tests/                          # 🧪 Unit and integration tests
 │   └── test_*.ts                   # Frontend and backend test suites
+├── assets/                         # 🎨 Icons, fonts, images
 ├── .env                            # 🔐 Environment variables and secrets
 ├── app.json                        # Expo app configuration
 ├── package.json                    # Project dependencies and scripts
 └── README.md                       # 📘 Project documentation
+
 
 
 ---
