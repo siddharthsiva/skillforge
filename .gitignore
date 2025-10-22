@@ -2,7 +2,7 @@
 .env
 backend/docker-compose.yml
 node_modules/
-
+frontend/firebase.ts
 # Build and deployment files
 dist/
 build/
